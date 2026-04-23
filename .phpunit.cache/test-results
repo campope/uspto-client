@@ -1,0 +1,1 @@
+{"version":2,"defects":[],"times":{"RadicalDreamers\\UsptoClient\\Tests\\PackageTest::test_it_registers_package_services":0.018,"RadicalDreamers\\UsptoClient\\Tests\\PackageTest::test_it_resolves_resources_through_service":0,"RadicalDreamers\\UsptoClient\\Tests\\PackageTest::test_it_resolves_resources_through_facade":0}}
