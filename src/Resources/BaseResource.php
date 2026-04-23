@@ -4,8 +4,8 @@ namespace RadicalDreamers\UsptoClient\Resources;
 
 use Illuminate\Http\Client\Response;
 use Psr\Http\Message\StreamInterface;
+use RadicalDreamers\UsptoClient\Exceptions\USPTORequestException;
 use RadicalDreamers\UsptoClient\USPTOClient;
-use RuntimeException;
 
 abstract class BaseResource
 {
@@ -27,7 +27,7 @@ abstract class BaseResource
     protected function ensureSuccessful(Response $response, string $message): Response
     {
         if (! $response->successful()) {
-            throw new RuntimeException($message, $response->status());
+            throw USPTORequestException::fromResponse($response, $message);
         }
 
         return $response;

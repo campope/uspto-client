@@ -4,7 +4,6 @@ namespace RadicalDreamers\UsptoClient\Resources;
 
 use RadicalDreamers\UsptoClient\Exceptions\USPTOApplicationNotFoundException;
 use RadicalDreamers\UsptoClient\Responses\ApplicationDataResponse;
-use RuntimeException;
 
 class ApplicationData extends BaseResource
 {
@@ -16,9 +15,7 @@ class ApplicationData extends BaseResource
             throw new USPTOApplicationNotFoundException($applicationNumber, $response->status());
         }
 
-        if ($response->failed()) {
-            throw new RuntimeException('Failed to fetch application data', $response->status());
-        }
+        $this->ensureSuccessful($response, 'Failed to fetch application data');
 
         return ApplicationDataResponse::fromJson($response->json());
     }
